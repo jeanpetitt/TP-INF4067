@@ -2,14 +2,17 @@ package Abstract_Factory;
 
 public class ScooterEssence extends Scooter {
 	
-	ScooterEssence(String name){
-		super(name);
+	ScooterEssence(String modele, String couleur, int puissance){
+		super(modele, couleur, puissance);
 	}
 	ScooterEssence(){}
 	
 	@Override 
 	public void afficher() {
-		System.out.println("je suis un scooter a essence");
-		System.out.println("ScooterEssence.afficher()");
+		System.out.println("Scooter à Essence");
+		System.out.println(
+				"     Modèle : " + this.getmodele() +
+				"\n     Couleur : " + this.getCouleur() + "\n     Puissance : " +
+				this.getPuissance());
 	}
 }

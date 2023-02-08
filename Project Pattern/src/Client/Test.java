@@ -18,15 +18,18 @@ public class Test {
 		// scooter
 		Scooter scooter = null;
 				
-		System.out.println("utilsation de la fabrique des vehicule a essence");
-		automobile = vehicule_ess.getAutomobile();
-		scooter = vehicule_ess.getScooter();
+		System.out.println("\nUtilsation de la fabrique des vehicule a essence");
+		automobile = vehicule_ess.creerAutomobile();
+		automobile.setModele("Modele Africain");
+		automobile.setCouleur("Rouge");
+		automobile.setPuissance(300);
+		scooter = vehicule_ess.creerScooter();
 		automobile.afficher();
 		scooter.afficher();
 				
 		System.out.println("\nutilsation de la fabrique des vehicule electrique");
-		automobile = vehicule_elec.getAutomobile();
-		scooter = vehicule_elec.getScooter();
+		automobile = vehicule_elec.creerAutomobile();
+		scooter = vehicule_elec.creerScooter();
 		automobile.afficher();
 		scooter.afficher();
 	}
@@ -57,7 +60,7 @@ public class Test {
 		
 		
 		// system choice case
-		int n = 2;
+		int n = 1;
 		switch (n ){
 		case 1:  {
 			abstractFactory();

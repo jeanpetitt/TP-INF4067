@@ -3,13 +3,15 @@ package Abstract_Factory;
 public class VehiculeEssence implements IvehiculeFactory {
 	
 //	 get automobileEssence
-	public Automobile getAutomobile() {
-		return new AutomobileEssence();
+	public Automobile creerAutomobile() {
+		return new AutomobileEssence("Standard", "Gris", 400);
 	}
 	
 //	 get scooterEssence
-	public Scooter getScooter() {
-		return new ScooterEssence();
+	public Scooter creerScooter() {
+		return new ScooterEssence("Toyota", "Noir", 250);
 	}
 
 }
+	
+	

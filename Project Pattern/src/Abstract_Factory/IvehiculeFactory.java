@@ -1,7 +1,9 @@
 package Abstract_Factory;
 
 public interface IvehiculeFactory {
-	public Automobile getAutomobile();
-	public Scooter getScooter();
+	
+	
+	public Automobile creerAutomobile();
+	public Scooter creerScooter();
 
 }
