@@ -5,9 +5,11 @@ import java.util.*;
 
 import Abstract_Factory.*;
 import Builder.*;
+import Bridge.*;
 import Factory_method.*;
 import singleton_template_method.*;
 import Adapter.*;
+import Composite.*;
 
 public class Test {
 	
@@ -110,7 +112,8 @@ public class Test {
 		s2.getDocument();
 	}
 
-	public static void adapter() {
+	public static void adapter() 
+	{
 		DocumentType document1, document2;
 		document1 = new DocumentHTML();
 		document1.setContenu("Pattern Leçon");
@@ -121,6 +124,42 @@ public class Test {
 		document2.setContenu("Pattern adapter");
 		document2.remplir();
 		document2.imprime();
+	}
+	
+	public static void bridge() 
+	{
+		// form immatriculation cameroun en HTML
+		FormImmatriculationCMR formulaire1 = new FormImmatriculationCMR(new FormulaireHTML());
+		formulaire1.affiche();
+		if (formulaire1.gereSaisie())
+			formulaire1.genereDocument();
+		System.out.println();
+		// form immatriculation chine en widget
+		FormImmatriculationChine formulaire2 = new FormImmatriculationChine(new FormulaireWidget());
+		formulaire2.affiche();
+		if (formulaire2.gereSaisie())
+			formulaire2.genereDocument();
+	}
+
+	public static void composite() {
+		//societe sans filiales
+		System.out.println("Socite 1" );
+		Societe societe1 = new SocieteSansFiliale();
+		societe1.ajouteVehicule();
+		societe1.afficher();
+		System.out.println("\nSocite 1" );
+		Societe societe2 = new SocieteSansFiliale();
+		societe2.ajouteVehicule();
+		societe2.ajouteVehicule();
+		societe2.afficher();
+		
+		//groupe de societe
+		System.out.println("\nGroupe" );
+		Societe groupe = new SocieteFiliale();
+		groupe.ajouteFiliale(societe1);
+		groupe.ajouteFiliale(societe2);
+		groupe.ajouteVehicule();
+		groupe.afficher();
 	}
 	
 	public static void main(String[] args) {
@@ -148,7 +187,7 @@ public class Test {
 		
 		
 		// system choice case
-		int choix = 5;
+		int choix = 7;
 		switch (choix){
 		case 1:  {
 			abstractFactory();
@@ -166,10 +205,10 @@ public class Test {
 			adapter();
 		} break;
 		case 6: {
-			System.out.println("choix 6");
+			bridge();
 		} break;
 		case 7: {
-			System.out.println("choix 7");
+			composite();
 		} break;
 		case 8: {
 			System.out.println("choix 8");
