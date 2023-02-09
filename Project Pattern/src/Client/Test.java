@@ -11,6 +11,7 @@ import singleton_template_method.*;
 import Adapter.*;
 import Composite.*;
 import Decorator.*;
+import Template_Method.*;
 
 public class Test {
 	
@@ -183,6 +184,18 @@ public class Test {
 	
 	public static void templateMethod()
 	{
+		System.out.println("\nCommande Cameroun" );
+		CommandeTaxe commandeCameroun = new CommandeCMR();
+		commandeCameroun.setMontantHt(10000);
+		commandeCameroun .calculeMontantTtc();
+		commandeCameroun .affiche();
+		
+		System.out.println("\n Commande Chine" );
+		
+		CommandeTaxe commandeChine = new CommandeChine();
+		commandeChine.setMontantHt(10000);
+		commandeChine .calculeMontantTtc();
+		commandeChine.affiche();
 		
 	}
 	
@@ -211,7 +224,7 @@ public class Test {
 		
 		
 		// system choice case
-		int choix = 8;
+		int choix = 10;
 		switch (choix){
 		case 1:  {
 			abstractFactory();
@@ -238,10 +251,10 @@ public class Test {
 			decorator();
 		} break;
 		case 9: {
-			System.out.println("choix 9");
+			iterator();
 		} break;
 		case 10: {
-			System.out.println("choix 10");
+			templateMethod();
 		} break;
 		
 		default:
