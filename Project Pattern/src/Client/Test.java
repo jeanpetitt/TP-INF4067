@@ -10,6 +10,7 @@ import Factory_method.*;
 import singleton_template_method.*;
 import Adapter.*;
 import Composite.*;
+import Decorator.*;
 
 public class Test {
 	
@@ -141,7 +142,8 @@ public class Test {
 			formulaire2.genereDocument();
 	}
 
-	public static void composite() {
+	public static void composite() 
+	{
 		//societe sans filiales
 		System.out.println("Socite 1" );
 		Societe societe1 = new SocieteSansFiliale();
@@ -160,6 +162,28 @@ public class Test {
 		groupe.ajouteFiliale(societe2);
 		groupe.ajouteVehicule();
 		groupe.afficher();
+	}
+	
+	public static void decorator() 
+	{
+		VueVehicule vueVehicule = new VueVehicule();
+		ModeleDecorator modeleDecorateur = new
+		ModeleDecorator(vueVehicule);
+		
+		MarqueDecorateur marqueDecorateur = new
+		MarqueDecorateur(modeleDecorateur);
+		marqueDecorateur.afficher();
+		
+	}
+	
+	public static void iterator() 
+	{
+		
+	}
+	
+	public static void templateMethod()
+	{
+		
 	}
 	
 	public static void main(String[] args) {
@@ -187,7 +211,7 @@ public class Test {
 		
 		
 		// system choice case
-		int choix = 7;
+		int choix = 8;
 		switch (choix){
 		case 1:  {
 			abstractFactory();
@@ -211,7 +235,7 @@ public class Test {
 			composite();
 		} break;
 		case 8: {
-			System.out.println("choix 8");
+			decorator();
 		} break;
 		case 9: {
 			System.out.println("choix 9");
