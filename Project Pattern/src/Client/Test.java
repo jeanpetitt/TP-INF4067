@@ -1,15 +1,19 @@
 package Client;
 
-import Abstract_Factory.Automobile;
-import Abstract_Factory.IvehiculeFactory;
-import Abstract_Factory.Scooter;
-import Abstract_Factory.VehiculeElectric;
-import Abstract_Factory.VehiculeEssence;
+
+import java.util.*;
+
+import Abstract_Factory.*;
+import Builder.*;
+import Factory_method.*;
+import singleton_template_method.*;
+import Adapter.*;
 
 public class Test {
 	
 	// function of client that manage abstract factory pattern
-	public static void abstractFactory() {
+	public static void abstractFactory() 
+{
 		IvehiculeFactory vehicule_ess = new VehiculeEssence();
 		IvehiculeFactory vehicule_elec = new VehiculeElectric();
 		
@@ -34,6 +38,90 @@ public class Test {
 		scooter.afficher();
 	}
 	
+	public static void builder() 
+{
+		Scanner lire = new Scanner(System.in);
+		MonteurLiasseVehicule monteur;
+		System.out.println("construire les liasses (1) HTML ou (2) PDF");
+		
+		String choix = lire.next();
+		lire.close();
+		switch (choix) {
+		case "1": {
+			monteur = new MonteurLiasseVehiculeHTML();
+		}break;
+		case "2": {
+			monteur = new MonteurLiasseVehiculePDF();
+		}break;
+		default:
+			throw new IllegalArgumentException("Unexpected value: " + choix);
+		}
+		
+		// le vendeur construire les document pour le client a svoir bon de commande....
+		Vendeur vendeur = new Vendeur(monteur);
+		LiasseDocument liasseDoc = vendeur.construire("jean");
+		liasseDoc.afficher();
+		
+	}
+
+	public static void factory() 
+{
+		// declarer les fabrique clientAC et clientPC
+		ClientCommande clientPC = new ClientPC();
+		ClientCommande clientAC = new ClientAC();
+		
+		Commande commande = null;
+		
+		// utilisation de la premiere fabrique
+		System.out.println("\nUtilisation de la fabrique ClientAc");
+		commande = clientAC.getNewCommande(5000);
+		commande.paye();
+		commande = clientAC.getNewCommande(4000);
+		commande.paye();
+		
+		
+		// utilisation de la seconf fabrique
+		System.out.println("\nUtilisation de la fabrique ClientPc");
+		commande = clientPC.getNewCommande(4000);
+		commande.paye();
+	}
+
+	public static void singletons() 
+{
+		// initialiser les document vierge
+		Document bonCommande = new BonDeCommande();
+		bonCommande.setContenu("Jean");
+		Document certSes = new CertificatDeSession();
+		certSes.setContenu("Jean");
+		Document immatriculation = new DemmandImmatriculation();
+		immatriculation.setContenu("Jean");
+		
+		ArrayList<Document> docs = new ArrayList<Document>();
+		docs.add(certSes);
+		//ajout des document a la liasse Vierge
+		LiasseViergeDocument s1 = LiasseViergeDocument.getLiasseVierge(docs);
+		System.out.println("\najout d'un document a la liasse verge");
+		s1.ajouter(immatriculation);
+		s1.getDocument();
+		
+		System.out.println("\n");
+		docs.add(bonCommande);
+		LiasseViergeDocument s2 = LiasseViergeDocument.getLiasseVierge(docs);
+		s2.getDocument();
+	}
+
+	public static void adapter() {
+		DocumentType document1, document2;
+		document1 = new DocumentHTML();
+		document1.setContenu("Pattern Leçon");
+		document1.remplir();
+		document1.imprime();
+		System.out.println();
+		document2 = new DocumentPDF();
+		document2.setContenu("Pattern adapter");
+		document2.remplir();
+		document2.imprime();
+	}
 	
 	public static void main(String[] args) {
 		
@@ -60,22 +148,22 @@ public class Test {
 		
 		
 		// system choice case
-		int n = 1;
-		switch (n ){
+		int choix = 5;
+		switch (choix){
 		case 1:  {
 			abstractFactory();
 		} break;
 		case 2: {
-			System.out.println("choix 2");
+			builder();
 		} break;
 		case 3: {
-			System.out.println("choix 3");
+			factory();
 		} break;
 		case 4: {
-			System.out.println("choix 4");
+			singletons();
 		} break;
 		case 5: {
-			System.out.println("choix 5");
+			adapter();
 		} break;
 		case 6: {
 			System.out.println("choix 6");
@@ -91,9 +179,6 @@ public class Test {
 		} break;
 		case 10: {
 			System.out.println("choix 10");
-		} break;
-		case 11: {
-			System.out.println("choix 11");
 		} break;
 		
 		default:
