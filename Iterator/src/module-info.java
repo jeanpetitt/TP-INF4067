@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author jeanpetit
- *
- */
-module Iterator {
-}

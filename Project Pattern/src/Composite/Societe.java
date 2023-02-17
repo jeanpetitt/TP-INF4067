@@ -1,3 +1,4 @@
+
 package Composite;
 
 public abstract class Societe {

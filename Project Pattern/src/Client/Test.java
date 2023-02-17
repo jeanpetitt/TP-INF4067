@@ -46,25 +46,25 @@ public class Test {
 {
 		Scanner lire = new Scanner(System.in);
 		MonteurLiasseVehicule monteur;
-		System.out.println("construire les liasses (1) HTML ou (2) PDF");
-		
-		String choix = lire.next();
-		lire.close();
-		switch (choix) {
-		case "1": {
-			monteur = new MonteurLiasseVehiculeHTML();
-		}break;
-		case "2": {
-			monteur = new MonteurLiasseVehiculePDF();
-		}break;
-		default:
-			throw new IllegalArgumentException("Unexpected value: " + choix);
+		for(int i= 1; i<=2;i++) {
+			System.out.println("\nconstruire les liasses (1) HTML ou (2) PDF");
+			String choix = lire.next();
+			switch (choix) {
+			case "1": {
+				monteur = new MonteurLiasseVehiculeHTML();
+			}break;
+			case "2": {
+				monteur = new MonteurLiasseVehiculePDF();
+			}break;
+			default:
+				throw new IllegalArgumentException("Unexpected value: " + choix);
+			}
+			// le vendeur construire les document pour le client a svoir bon de commande....
+			Vendeur vendeur = new Vendeur(monteur);
+			LiasseDocument liasseDoc = vendeur.construire("jean");
+			liasseDoc.afficher();
 		}
 		
-		// le vendeur construire les document pour le client a svoir bon de commande....
-		Vendeur vendeur = new Vendeur(monteur);
-		LiasseDocument liasseDoc = vendeur.construire("jean");
-		liasseDoc.afficher();
 		
 	}
 
@@ -223,48 +223,50 @@ public class Test {
 		
 		
 		
-		// system choice case
-		int choix = 10;
-		switch (choix){
-		case 1:  {
-			abstractFactory();
-		} break;
-		case 2: {
-			builder();
-		} break;
-		case 3: {
-			factory();
-		} break;
-		case 4: {
-			singletons();
-		} break;
-		case 5: {
-			adapter();
-		} break;
-		case 6: {
-			bridge();
-		} break;
-		case 7: {
-			composite();
-		} break;
-		case 8: {
-			decorator();
-		} break;
-		case 9: {
-			iterator();
-		} break;
-		case 10: {
-			templateMethod();
-		} break;
+		Scanner lire = new Scanner(System.in);
 		
-		default:
-			throw new IllegalArgumentException("Unexpected value: " );
+		for (int i=0; i< 10; i++) {
+			System.out.println("\nEntrer à nouveau  nombre pour effectuer un nouveau choix: ");
+			String choix = lire.next();
+			switch (choix){
+			case "1":  {
+				abstractFactory();
+			} break;
+			case "2": {
+				builder();
+			} break;
+			case "3": {
+				factory();
+			} break;
+			case "4": {
+				singletons();
+			} break;
+			case "5": {
+				adapter();
+			} break;
+			case "6": {
+				bridge();
+			} break;
+			case "7": {
+				composite();
+			} break;
+			case "8": {
+				decorator();
+			} break;
+			case "9": {
+				iterator();
+			} break;
+			case "10": {
+				templateMethod();
+			} break;
+			
+			default:
+				throw new IllegalArgumentException("Unexpected value: " );
+			}
+			
+			
 		}
-		
-		
-		
-		
-		
+		lire.close();
 		
 
 	}

@@ -14,7 +14,7 @@ public class MonteurLiasseVehiculeHTML extends MonteurLiasseVehicule {
 	// monteur demande d'immatriculation
 	public void monteurDemandeImmatriculation(String nomClient){
 		String doc ;
-		doc = "<HTML>Demande d'immatriculation  Demandeur : " +nomClient+ "</HTML>";
+		doc = "<HTML>Demande d'immatriculation Client : " +nomClient+ "</HTML>";
 		liasseDoc.ajouter(doc);
 	}
 	
