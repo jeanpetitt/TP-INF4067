@@ -14,6 +14,7 @@ import Decorator.*;
 import Template_Method.*;
 
 public class Test {
+	static Scanner lire = new Scanner(System.in);
 	
 	// function of client that manage abstract factory pattern
 	public static void abstractFactory() 
@@ -44,7 +45,7 @@ public class Test {
 	
 	public static void builder() 
 {
-		Scanner lire = new Scanner(System.in);
+		
 		MonteurLiasseVehicule monteur;
 		for(int i= 1; i<=2;i++) {
 			System.out.println("\nconstruire les liasses (1) HTML ou (2) PDF");
@@ -64,7 +65,6 @@ public class Test {
 			LiasseDocument liasseDoc = vendeur.construire("jean");
 			liasseDoc.afficher();
 		}
-		
 		
 	}
 
@@ -204,29 +204,27 @@ public class Test {
 		
 		
 		// different functionalities of project menu
-		System.out.println("******************************************************************************");
-		System.out.println("******************************************************************************");
-		System.out.println("\n*****************************\t Choix du Menu \t***************************");
-		System.out.println("**************\t\t 1. Abstract Factory                                           *********");
-		System.out.println("**************\t\t 2. Builder                                                              *********");
-		System.out.println("**************\t\t 3. Factory Method                                             *********");
-		System.out.println("**************\t\t 4. Singleton                                                          *********");
-		System.out.println("**************\t\t 5. Adapter                                                            *********");
-		System.out.println("**************\t\t 6. Bridge                                                               *********");
-		System.out.println("**************\t\t 7. Composite                                                       *********");
-		System.out.println("**************\t\t 8. Decorator                                                        *********");
-		System.out.println("**************\t\t 9. Observer                                                          *********");
-		System.out.println("**************\t\t 10. Iterator                                                           *********");
-		System.out.println("**************\t\t 11. Template Method                                         *********");
-		System.out.println("******************************************************************************");
-		System.out.println("******************************************************************************");
+		System.out.println("******************************************************************************************");
+		System.out.println("******************************************************************************************");
+		System.out.println("\n*****************************\t Choix du Menu \t******************************************");
+		System.out.println("**************\t\t 1. Abstract Factory                                     *********");
+		System.out.println("**************\t\t 2. Builder                                              *********");
+		System.out.println("**************\t\t 3. Factory Method                                       *********");
+		System.out.println("**************\t\t 4. Singleton                                            *********");
+		System.out.println("**************\t\t 5. Adapter                                              *********");
+		System.out.println("**************\t\t 6. Bridge                                               *********");
+		System.out.println("**************\t\t 7. Composite                                            *********");
+		System.out.println("**************\t\t 8. Decorator                                            *********");
+		System.out.println("**************\t\t 9. Observer                                             *********");
+		System.out.println("**************\t\t 10. Iterator                                            *********");
+		System.out.println("**************\t\t 11. Template Method                                     *********");
+		System.out.println("******************************************************************************************");
+		System.out.println("******************************************************************************************");
 		
-		
-		
-		Scanner lire = new Scanner(System.in);
+		// stwich case
 		
 		for (int i=0; i< 10; i++) {
-			System.out.println("\nEntrer à nouveau  nombre pour effectuer un nouveau choix: ");
+			System.out.println("\nEntrer un nombre pour effectuer un nouveau choix: ");
 			String choix = lire.next();
 			switch (choix){
 			case "1":  {
